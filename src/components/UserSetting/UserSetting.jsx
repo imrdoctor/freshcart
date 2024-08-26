@@ -24,7 +24,7 @@ export default function AccountDropdown2() {
     localStorage.removeItem("userToken");
     localStorage.removeItem('userEmail');
     localStorage.removeItem('UserName');
-    navigate('/login');
+    navigate('/freshcart/login');
     toast.success("You're Log Out.",{
       style: {
         background: '#22d210',
@@ -41,7 +41,7 @@ export default function AccountDropdown2() {
     localStorage.removeItem("userToken");
     localStorage.removeItem('userEmail');
     localStorage.removeItem('UserName');
-    navigate('/login');
+    navigate('/freshcart/login');
     toast.error("Logged out for security reasons Log in again",{
       // securty icon
       icon:'🛡️',
