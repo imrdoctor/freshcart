@@ -4,12 +4,10 @@ import axios from 'axios';
 import Loader from '../Loader/Loader'; 
 import { UserContext } from '../../context/userContext';
 import { useNavigate } from 'react-router-dom';
-import Home from '../Home/Home'
 import toast from 'react-hot-toast';
 
 export default function ResetPassword() {
   const [isLoading, setIsLoading] = useState(false);
-  const [showHome, setshowHome] = useState(false);
   const { setuserlogin } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -22,15 +20,13 @@ export default function ResetPassword() {
       );
       if(data){
         setuserlogin(data.token);
-        localStorage.setItem('userToken', data.token);
         toast.success("Password changed successfully",{
           style: {
             background: '#22d210',
             color: '#fff',
           },
         });
-        navigate('/freshcart/home');
-        setshowHome(true)
+        navigate('/freshcart/login');
       }
       if (data.statusMsg === "success") {
         console.log("Password reset successful");
@@ -59,10 +55,6 @@ export default function ResetPassword() {
   
   if (isLoading) {
     return <Loader />;
-  }
-
-  if(showHome){
-    return <Home />
   }
   return (
     <div className="flex justify-center items-center">

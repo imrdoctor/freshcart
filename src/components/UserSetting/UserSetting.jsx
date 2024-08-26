@@ -12,7 +12,7 @@ export default function AccountDropdown2() {
   const { allOrdersNum } = useContext(AllOrders);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { userlogin, setuserlogin } = useContext(UserContext);
-  const [usetinfo, setusetinfo] = useState(false);
+  const [userinfo, setuserinfo] = useState(false);
   const navigate = useNavigate();
   const { decodedToken } = useContext(TokenContext);
   const trigger = useRef(null);
@@ -33,7 +33,6 @@ export default function AccountDropdown2() {
     });
     setTimeout(() => {
       window.location.reload();
-
     }, 1400);
   };
   const SecurtilogOut = () => {
@@ -57,7 +56,8 @@ export default function AccountDropdown2() {
   };
   // close on click outside
   useEffect(() => {
-    setusetinfo(decodedToken)
+    setuserinfo(decodedToken)
+    console.log(userinfo);
     
     const clickHandler = ({ target }) => {
       if (!dropdown.current) return;
@@ -139,7 +139,7 @@ export default function AccountDropdown2() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-dark dark:text-white">
-                    {usetinfo?.name}
+                    {userinfo?.name}
                   </p>
                   <p className="text-sm text-body-color dark:text-dark-6">
                     {userEmail}
