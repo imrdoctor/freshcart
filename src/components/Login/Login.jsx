@@ -118,7 +118,7 @@ export default function Login() {
         </button>
         {/* Make go to reset pass  */}
         <div className="resetPass">
-          <Link to="/ResetPassword" className="text-blue-600 hover:text-blue-800 transition ">
+          <Link to="/freshcart/ResetPassword" className="text-blue-600 hover:text-blue-800 transition ">
           <p>Forget Password ? Reset Now</p> 
           </Link>
         </div>
