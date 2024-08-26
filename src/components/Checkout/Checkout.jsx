@@ -46,7 +46,7 @@ export default function Checkout() {
         }
       } else {
         // API call for online payment
-        responseOnline = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${pymintid}?url=http://https://imrdoctor.github.io/freshcart/`, formValue, {
+        responseOnline = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${pymintid}?url=https://imrdoctor.github.io/freshcart`, formValue, {
           headers: {
             token: localStorage.getItem("userToken"),
           },
