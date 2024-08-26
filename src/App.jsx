@@ -1,78 +1,81 @@
-import { useState } from 'react';
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-import Contact from './components/Contact/Contact.jsx';
-import LayOut from './components/LayOut/LayOut.jsx';
-import Regester from './components/Regester/Regester.jsx';
-import Home from './components/Home/Home.jsx';
-import Products from './components/Products/Products.jsx';
-import Login from './components/Login/Login.jsx';
-import Cart from './components/Cart/Cart.jsx';
-import Categories from './components/Categories/Categories.jsx';
-import Brands from './components/Brands/Brands.jsx';
-import NotFound from './components/NotFound/NotFound.jsx';
-import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
-import ProtectedRoute from './components/ProtectedRoutes/ProtectWebRoute.jsx';
-import WshList from './components/WshList/WshList.jsx';
-import ProtectLoginnedRoute from './components/ProtectedRoutes/ProtectLoginnedRoute.jsx';
-import ResetPassword from './components/ResetPassword/ResetPassword.jsx';
-import Allorders from './components/Allorders/Allorders.jsx';
-import Checkout from './components/Checkout/Checkout.jsx';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import UserContextProvider from './context/userContext';
 import AllOrdersContext from './context/AllOrdersContext';
 import CartContextProvider from './context/CartContext';
 import WashListContext from './context/WashListContext';
 import TokenContextProvider from './context/TokenContext'; // Import TokenContextProvider
-import { QueryClient } from '@tanstack/react-query';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import toast, { Toaster } from 'react-hot-toast';
 
-let query = new QueryClient();
+// Lazy load components
+const LayOut = lazy(() => import('./components/LayOut/LayOut.jsx'));
+const Contact = lazy(() => import('./components/Contact/Contact.jsx'));
+const Register = lazy(() => import('./components/Regester/Regester.jsx'));
+const Home = lazy(() => import('./components/Home/Home.jsx'));
+const Products = lazy(() => import('./components/Products/Products.jsx'));
+const Login = lazy(() => import('./components/Login/Login.jsx'));
+const Cart = lazy(() => import('./components/Cart/Cart.jsx'));
+const Categories = lazy(() => import('./components/Categories/Categories.jsx'));
+const Brands = lazy(() => import('./components/Brands/Brands.jsx'));
+const NotFound = lazy(() => import('./components/NotFound/NotFound.jsx'));
+const ProductDetails = lazy(() => import('./components/ProductDetails/ProductDetails.jsx'));
+const ProtectedRoute = lazy(() => import('./components/ProtectedRoutes/ProtectWebRoute.jsx'));
+const WshList = lazy(() => import('./components/WshList/WshList.jsx'));
+const ProtectLoginnedRoute = lazy(() => import('./components/ProtectedRoutes/ProtectLoginnedRoute.jsx'));
+const ResetPassword = lazy(() => import('./components/ResetPassword/ResetPassword.jsx'));
+const Allorders = lazy(() => import('./components/Allorders/Allorders.jsx'));
+const Checkout = lazy(() => import('./components/Checkout/Checkout.jsx'));
 
+// Create a QueryClient instance
+const queryClient = new QueryClient();
+
+// Define routes
 const routes = createBrowserRouter([
   {
     path: '/freshcart',
     element: <LayOut />,
     children: [
-      { index: true, element: <ProtectedRoute><Home /></ProtectedRoute> },
-      { path: 'regester', element: <ProtectLoginnedRoute><Regester /></ProtectLoginnedRoute> },
-      { path: 'resetPassword', element: <ProtectLoginnedRoute><ResetPassword /></ProtectLoginnedRoute> },
-      { path: 'home', element: <ProtectedRoute><Home /></ProtectedRoute> },
-      { path: 'cart', element: <ProtectedRoute><Cart /></ProtectedRoute> },
-      { path: 'wishList', element: <ProtectedRoute><WshList /></ProtectedRoute> },
-      { path: 'products', element: <ProtectedRoute><Products /></ProtectedRoute> },
-      { path: 'login', element: <ProtectLoginnedRoute><Login /></ProtectLoginnedRoute> },
-      { path: 'categories', element: <ProtectedRoute><Categories /></ProtectedRoute> },
-      { path: 'Allorders', element: <ProtectedRoute><Allorders /></ProtectedRoute> },
-      { path: 'productdetails/:productId', element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
-      { path: 'brands', element: <ProtectedRoute><Brands /></ProtectedRoute> },
-      { path: 'checkOut/:pymintid', element: <ProtectedRoute><Checkout /></ProtectedRoute> },
-      { path: '*', element: <NotFound /> },
+      { index: true, element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Home /></ProtectedRoute></Suspense> },
+      { path: 'regester', element: <Suspense fallback={<div>Loading...</div>}><ProtectLoginnedRoute><Register /></ProtectLoginnedRoute></Suspense> },
+      { path: 'resetPassword', element: <Suspense fallback={<div>Loading...</div>}><ProtectLoginnedRoute><ResetPassword /></ProtectLoginnedRoute></Suspense> },
+      { path: 'home', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Home /></ProtectedRoute></Suspense> },
+      { path: 'cart', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Cart /></ProtectedRoute></Suspense> },
+      { path: 'wishList', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><WshList /></ProtectedRoute></Suspense> },
+      { path: 'products', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Products /></ProtectedRoute></Suspense> },
+      { path: 'login', element: <Suspense fallback={<div>Loading...</div>}><ProtectLoginnedRoute><Login /></ProtectLoginnedRoute></Suspense> },
+      { path: 'categories', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Categories /></ProtectedRoute></Suspense> },
+      { path: 'Allorders', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Allorders /></ProtectedRoute></Suspense> },
+      { path: 'productdetails/:productId', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ProductDetails /></ProtectedRoute></Suspense> },
+      { path: 'brands', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Brands /></ProtectedRoute></Suspense> },
+      { path: 'checkOut/:pymintid', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Checkout /></ProtectedRoute></Suspense> },
+      { path: '*', element: <Suspense fallback={<div>Loading...</div>}><NotFound /></Suspense> },
     ],
   },
 ]);
 
 function App() {
   return (
-    <>
-      <QueryClientProvider client={query}>
-        <TokenContextProvider> 
-          <UserContextProvider>
-            <CartContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <TokenContextProvider> 
+        <UserContextProvider>
+          <CartContextProvider>
             <AllOrdersContext>
               <WashListContext>
-                <RouterProvider router={routes} />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <RouterProvider router={routes} />
+                </Suspense>
+                <Toaster />
+                <ReactQueryDevtools initialIsOpen={false} />
               </WashListContext>
             </AllOrdersContext>
-            </CartContextProvider>
-          </UserContextProvider>
-        </TokenContextProvider>
-        <Toaster />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </>
+          </CartContextProvider>
+        </UserContextProvider>
+      </TokenContextProvider>
+    </QueryClientProvider>
   );
 }
 
