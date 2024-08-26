@@ -22,11 +22,11 @@ export default function ProtectedRoute(props) {
         } else {
           console.log("Invalid Token, redirecting to login");
           setIsAuthenticated(false);
-          navigate('/login');
+          navigate('/freshcart/login');
         }
       } catch (err) {
         setIsAuthenticated(false);
-        navigate('/login');
+        navigate('/freshcart/login');
         localStorage.removeItem("userToken");
         setuserlogin(null);
       }
@@ -42,6 +42,6 @@ export default function ProtectedRoute(props) {
   if (isAuthenticated) {
     return props.children; 
   } else {
-    return <Navigate to={'/login'} />; 
+    return <Navigate to={'/freshcart/login'} />; 
   }
 }

@@ -33,7 +33,7 @@ export default function Checkout() {
   
         if (responseCash.data.status === "success") {
           // Navigate to all orders page for cash on delivery
-          navigate("/allorders");
+          navigate("/freshcart/allorders");
           console.log("Cash on delivery order processed successfully", responseCash.data);
         } else {
           // Handle error response for cash on delivery

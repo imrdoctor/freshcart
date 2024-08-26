@@ -6,6 +6,6 @@ export default function protectedRoute(props) {
   }
   else{
     // user not login
- return <Navigate to={'/home'} />
+ return <Navigate to={'/freshcart/home'} />
   }
 }

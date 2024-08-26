@@ -22,7 +22,7 @@ export default function ProtectLogin() {
           console.log("Get Out Of Here !");
         }
       } catch (err) {
-        navigate('/login');  
+        navigate('/freshcart/login');  
       }
     }
 

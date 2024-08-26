@@ -22,7 +22,7 @@ export default function Register() {
           },
         });
         setisLoading(true)
-        navigate('/login');
+        navigate('/freshcart/login');
       } else {
         toast.error('Registration failed. Please try again.',{
           style: {

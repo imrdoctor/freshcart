@@ -29,7 +29,7 @@ export default function ResetPassword() {
             color: '#fff',
           },
         });
-        navigate('/home');
+        navigate('/freshcart/home');
         setshowHome(true)
       }
       if (data.statusMsg === "success") {

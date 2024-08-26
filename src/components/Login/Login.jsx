@@ -30,7 +30,7 @@ export default function Login() {
         });
         setisLoading(true)
           setuserlogin(data.user);
-          navigate('/home');
+          navigate('/freshcart/home');
       } else {
         toast.error(error.response.data.message || 'Login failed.');
       }
