@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-color: #b197fc;
+  --dark-bg: #15151b;
+  --second-color: #9e4afb;
+}
+
+/* global.css or your main CSS file */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+}
+body {
+  background-image: url(/src/assets/images/light-patten.svg);
+  background-attachment: fixed; /* لو اتشالت الموقع هيبقا تقيل  */
+}
+#root {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
+/* i want make row like botstrap with tiwland apply*/
+/* Adjust row styling */
+.row {
+  @apply flex items-center flex-wrap px-4 py-8;
+}
+
+/* Responsive button styling */
+.btn {
+  @apply px-4 py-2 rounded w-full;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+main {
+  flex-grow: 1;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f4f4f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #31c48d;
+  border-radius: 3px;
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-82%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.7s ease-out;
+}
+
+/* notifications style */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  25% {
+    opacity: 0.2;
+    transform: scale(0.2);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+  75% {
+    opacity: 0.7;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes popOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.7;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+  75% {
+    opacity: 0.2;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.alert-show {
+  animation: fadeIn 0.3s ease-in-out, glitch 0.3s ease-in-out 0.3s forwards;
+}
+
+.alert-hide {
+  animation: glitch 0.3s ease-in-out, popOut 0.3s ease-in-out 0.3s forwards;
+}
+.bg-glass {
+  background-color: #2b2b3d2d;
+  box-shadow: 0 0 0 0.05rem #cdaeff10;
+  border-image: linear-gradient(
+    to right,
+    #00000000 0%,
+    var(--main-color) 33%,
+    var(--main-color) 66%,
+    #00000000 100%
+  );
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  border-image-slice: 1;
+}
+
+/* Add to washlist */
+
+/* From Uiverse.io by barisdogansutcu */
+.love-heart:before,
+#switch {
+  display: none;
+}
+
+.love-heart,
+.love-heart::after {
+  border-color: hsl(231deg 28% 86%);
+  border: 1px solid;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  width: 10px;
+  height: 8px;
+  border-bottom: 0;
+}
+
+.round {
+  position: absolute;
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  background: hsl(0deg 0% 100%);
+  -webkit-box-shadow: rgb(0 0 0 / 24%) 0px 0px 4px 0px;
+  box-shadow: rgb(0 0 0 / 24%) 0px 0px 4px 0px;
+  border-radius: 100%;
+  left: 0px;
+  bottom: -1px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-animation: check-animation2 0.5s forwards;
+  animation: check-animation2 0.5s forwards;
+}
+
+input:checked + label .round {
+  -webkit-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+  -webkit-animation: check-animation 0.5s forwards;
+  animation: check-animation 0.5s forwards;
+  background-color: hsl(0deg 0% 100%);
+}
+
+@-webkit-keyframes check-animation {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    -webkit-transform: translate(0px, 7px);
+    transform: translate(0px, 7px);
+  }
+
+  100% {
+    -webkit-transform: translate(7px, 7px);
+    transform: translate(7px, 7px);
+  }
+}
+
+@keyframes check-animation {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    -webkit-transform: translate(0px, 7px);
+    transform: translate(0px, 7px);
+  }
+
+  100% {
+    -webkit-transform: translate(7px, 7px);
+    transform: translate(7px, 7px);
+  }
+}
+
+@-webkit-keyframes check-animation2 {
+  0% {
+    -webkit-transform: translate(7px, 7px);
+    transform: translate(7px, 7px);
+  }
+
+  50% {
+    -webkit-transform: translate(0px, 7px);
+    transform: translate(0px, 7px);
+  }
+
+  100% {
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes check-animation2 {
+  0% {
+    -webkit-transform: translate(7px, 7px);
+    transform: translate(7px, 7px);
+  }
+
+  50% {
+    -webkit-transform: translate(0px, 7px);
+    transform: translate(0px, 7px);
+  }
+
+  100% {
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+}
+
