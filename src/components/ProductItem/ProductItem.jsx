@@ -67,7 +67,7 @@ export default function ProductItem({ product, loading, cruntid, addToCart, AddW
               <button disabled={loading && product.id == cruntid} onClick={() => addToCart(product.id)} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-transform transform">
                 {loading && product.id === cruntid ? (<><i className="fa-solid fa-spinner fa-spin-pulse"></i> <span>loading</span></>) : (<span> <i className="fa-solid fa-cart-shopping mr-2"></i> {" "} Add To Cart</span>)}
               </button>
-              <Link to={`/productdetails/${product.id}`}>
+              <Link to={`/freshcart/productdetails/${product.id}`}>
                 <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-transform transform">
                   <i className="fa-solid fa-info-circle mr-2"></i>{" "}
                   <span>Product Details</span>
