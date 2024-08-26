@@ -29,10 +29,7 @@ export default function AllOrdersProvider(props) {
         try {
             const res = await axios.get(api, { headers });
             setOrders(res);        
-            setallOrdersNum(res.data.length);
-            console.log(allOrdersNum);
-            
-                
+            setallOrdersNum(res.data.length);                
         } catch (error) {
             console.error("Failed to fetch orders", error);
         } finally {
