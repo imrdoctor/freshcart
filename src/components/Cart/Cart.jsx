@@ -175,7 +175,7 @@ export default function Cart() {
 
         {hasProducts ? (
           <div className="px-12">
-            <Link to={`/checkOut/${cartid}`}>
+            <Link to={`/freshcart/checkOut/${cartid}`}>
               <button className="text-green-800 w-full my-3 border border-1 border-green-500 bg-green-300 p-2 rounded-lg hover:text-white hover:bg-green-800 hover:border-green-600 font-medium transition-colors duration-300">
                 <i className="fa-regular fa-credit-card"></i> Continue to CheckOut
               </button>
