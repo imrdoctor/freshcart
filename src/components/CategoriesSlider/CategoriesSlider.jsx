@@ -33,26 +33,6 @@ const settings = {
     },
   ],
 };
-
-// export default function CategoriesSlider() {
-//   const [categories, setCategories] = useState([]);
-
-//   function getCategories() {
-//     axios
-//       .get("https://ecommerce.routemisr.com/api/v1/categories")
-//       .then(({ data }) => {
-//         setCategories(data.data);
-//         console.log(data.data);
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   }
-
-//   useEffect(() => {
-//     getCategories();
-//   }, []);
-
 export default function CategoriesSlider() {
   function getCategories() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/categories");

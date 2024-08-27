@@ -6,7 +6,7 @@ import UserContextProvider from './context/userContext';
 import AllOrdersContext from './context/AllOrdersContext';
 import CartContextProvider from './context/CartContext';
 import WashListContext from './context/WashListContext';
-import TokenContextProvider from './context/TokenContext'; // Import TokenContextProvider
+import TokenContextProvider from './context/TokenContext'; 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import toast, { Toaster } from 'react-hot-toast';

@@ -8,7 +8,7 @@ export default function Allorders() {
 
   useEffect(() => {
     if (getAllOrders) {
-      getAllOrders(); // Call the context function to fetch orders
+      getAllOrders(); 
     }
   }, [getAllOrders]);
 
