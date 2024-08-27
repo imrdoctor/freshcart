@@ -39,7 +39,7 @@ export default function ProtectedRoute(props) {
         setuserlogin(null);
         navigate('/freshcart/login');
       } finally {
-        setLoading(false); // تأكد من تغيير حالة التحميل عند الانتهاء
+        setLoading(false); 
       }
     }
 
@@ -47,7 +47,7 @@ export default function ProtectedRoute(props) {
   }, [navigate, setuserlogin]);
 
   if (loading) {
-    return <div>Loading...</div>; // عرض شاشة تحميل أثناء التحقق
+    return <div>Loading...</div>; 
   }
 
   if (isAuthenticated) {

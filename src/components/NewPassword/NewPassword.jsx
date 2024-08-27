@@ -7,19 +7,15 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 export default function ResetPassword() {
-  const [isLoading, setIsLoading] = useState(false);
-  const { setuserlogin } = useContext(UserContext);
   const navigate = useNavigate();
 
   const resetSubmit = async (formValue) => {
-    // setIsLoading(true);
     try {
       const { data } = await axios.put(
         'https://ecommerce.routemisr.com/api/v1/auth/resetPassword',
         formValue, 
       );
       if(data){
-        setuserlogin(data.token);
         toast.success("Password changed successfully",{
           style: {
             background: '#22d210',
@@ -41,7 +37,6 @@ export default function ResetPassword() {
           },
       });
     } finally {
-      // setIsLoading(false);
     }
   };
 
