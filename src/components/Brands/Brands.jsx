@@ -49,7 +49,7 @@ export default function Brands() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {data?.data?.data.map((brand) => (
           <div
-            key={brand.id}
+            key={brand._id}
             className="p-4 rounded border-4 hover:border-green-400 hover:bg-green-50 duration-300 cursor-pointer"
             onClick={() => handleBrandClick(brand)}
           >
