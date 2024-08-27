@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import axios from 'axios';
+import Loader from '../Loader/Loader'; 
 
 export default function ProtectedRoute(props) {
   const { setuserlogin } = useContext(UserContext);
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(null); 
-  const [loading, setLoading] = useState(true); // حالة لتحميل التحقق
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const token = localStorage.getItem('userToken');
@@ -33,7 +34,7 @@ export default function ProtectedRoute(props) {
           navigate('/freshcart/login');
         }
       } catch (err) {
-        console.error("Error verifying token:", err.response?.data || err.message); // عرض تفاصيل الخطأ
+        console.error("Error verifying token:", err.response?.data || err.message); 
         setIsAuthenticated(false);
         localStorage.removeItem("userToken");
         setuserlogin(null);
@@ -47,7 +48,7 @@ export default function ProtectedRoute(props) {
   }, [navigate, setuserlogin]);
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <Loader />;
   }
 
   if (isAuthenticated) {
