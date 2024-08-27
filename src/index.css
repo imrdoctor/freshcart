@@ -40,16 +40,7 @@ footer {
   @apply px-4 py-2 rounded w-full;
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  justify-content: space-between;
-}
 
-main {
-  flex-grow: 1;
-}
 
 ::-webkit-scrollbar {
   width: 0.4rem;

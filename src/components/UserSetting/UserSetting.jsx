@@ -81,7 +81,7 @@ export default function AccountDropdown2() {
     };
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
-  });
+  },[]);
   // first open page set user name user name
   useEffect(() => {
     if (decodedToken) {

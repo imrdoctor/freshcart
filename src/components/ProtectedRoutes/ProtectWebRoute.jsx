@@ -7,41 +7,52 @@ export default function ProtectedRoute(props) {
   const { setuserlogin } = useContext(UserContext);
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(null); 
+  const [loading, setLoading] = useState(true); // حالة لتحميل التحقق
 
   useEffect(() => {
-    const headers = {
-      token: localStorage.getItem('userToken'),
-    };
+    const token = localStorage.getItem('userToken');
 
     async function checkLoginStatus() {
+      if (!token) {
+        setIsAuthenticated(false);
+        setLoading(false);
+        navigate('/freshcart/login');
+        return;
+      }
+
+      const headers = { token };
+
       try {
-        const res = await axios.get('https://ecommerce.routemisr.com/api/v1/addresses', { headers });
-        if (res.data.status === "success") {
+        const res = await axios.get('https://ecommerce.routemisr.com/api/v1/auth/verifyToken', { headers });
+        if (res.data.message === "verified") {
           console.log("Your Token Is Real");
-          setIsAuthenticated(true); // التوكن صحيح
+          setIsAuthenticated(true); 
         } else {
           console.log("Invalid Token, redirecting to login");
           setIsAuthenticated(false);
           navigate('/freshcart/login');
         }
       } catch (err) {
+        console.error("Error verifying token:", err.response?.data || err.message); // عرض تفاصيل الخطأ
         setIsAuthenticated(false);
-        navigate('/freshcart/login');
         localStorage.removeItem("userToken");
         setuserlogin(null);
+        navigate('/freshcart/login');
+      } finally {
+        setLoading(false); // تأكد من تغيير حالة التحميل عند الانتهاء
       }
     }
 
     checkLoginStatus();
-  }, [navigate]);
+  }, [navigate, setuserlogin]);
 
-  if (isAuthenticated === null) {
-    return null; 
+  if (loading) {
+    return <div>Loading...</div>; // عرض شاشة تحميل أثناء التحقق
   }
 
   if (isAuthenticated) {
     return props.children; 
   } else {
-    return <Navigate to={'/freshcart/login'} />; 
+    return <Navigate to='/freshcart/login' />;
   }
 }

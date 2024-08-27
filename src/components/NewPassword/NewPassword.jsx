@@ -12,7 +12,7 @@ export default function ResetPassword() {
   const navigate = useNavigate();
 
   const resetSubmit = async (formValue) => {
-    setIsLoading(true);
+    // setIsLoading(true);
     try {
       const { data } = await axios.put(
         'https://ecommerce.routemisr.com/api/v1/auth/resetPassword',
@@ -41,7 +41,7 @@ export default function ResetPassword() {
           },
       });
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
