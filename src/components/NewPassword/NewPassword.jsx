@@ -47,9 +47,6 @@ export default function ResetPassword() {
     onSubmit: resetSubmit,
   });
   
-  if (isLoading) {
-    return <Loader />;
-  }
   return (
     <div className="flex justify-center items-center">
       <form onSubmit={formik.handleSubmit} className="bg-glass p-8 shadow-lg rounded-lg w-full max-w-md flex flex-col items-center gap-6">
