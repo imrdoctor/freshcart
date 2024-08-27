@@ -56,9 +56,7 @@ export default function AccountDropdown2() {
   };
   // close on click outside
   useEffect(() => {
-    setuserinfo(decodedToken)
-    console.log(userinfo);
-    
+    setuserinfo(decodedToken)    
     const clickHandler = ({ target }) => {
       if (!dropdown.current) return;
       if (
