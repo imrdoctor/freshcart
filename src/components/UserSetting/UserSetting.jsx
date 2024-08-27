@@ -71,7 +71,7 @@ export default function AccountDropdown2() {
     };
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);
-  });
+  },[]);
 
   // close if the esc key is pressed
   useEffect(() => {
