@@ -14,6 +14,8 @@ export default function TokenContextProvider(props) {
       try {
         const decoded = jwtDecode(token); 
         setDecodedToken(decoded);
+        console.log(decoded);
+        
         if(decodedToken){
             console.log(decodedToken);
         }

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import Loader from '../Loader/Loader'; 
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 

@@ -13,7 +13,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 // Lazy load components
 const LayOut = lazy(() => import('./components/LayOut/LayOut.jsx'));
-const Contact = lazy(() => import('./components/Contact/Contact.jsx'));
+const ReturnsExchanges = lazy(() => import('./components/ReturnsExchanges/ReturnsExchanges.jsx'));
 const Register = lazy(() => import('./components/Regester/Regester.jsx'));
 const Home = lazy(() => import('./components/Home/Home.jsx'));
 const Products = lazy(() => import('./components/Products/Products.jsx'));
@@ -29,6 +29,7 @@ const ProtectLoginnedRoute = lazy(() => import('./components/ProtectedRoutes/Pro
 const ResetPassword = lazy(() => import('./components/ResetPassword/ResetPassword.jsx'));
 const Allorders = lazy(() => import('./components/Allorders/Allorders.jsx'));
 const Checkout = lazy(() => import('./components/Checkout/Checkout.jsx'));
+const UserSettings = lazy(() => import('./components/UserSettings/UserSettings.jsx'));
 
 // Create a QueryClient instance
 const queryClient = new QueryClient();
@@ -48,10 +49,12 @@ const routes = createBrowserRouter([
       { path: 'products', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Products /></ProtectedRoute></Suspense> },
       { path: 'login', element: <Suspense fallback={<div>Loading...</div>}><ProtectLoginnedRoute><Login /></ProtectLoginnedRoute></Suspense> },
       { path: 'categories', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Categories /></ProtectedRoute></Suspense> },
+      { path: 'ReturnsExchanges', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ReturnsExchanges /></ProtectedRoute></Suspense> },
       { path: 'Allorders', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Allorders /></ProtectedRoute></Suspense> },
       { path: 'productdetails/:productId', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ProductDetails /></ProtectedRoute></Suspense> },
       { path: 'brands', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Brands /></ProtectedRoute></Suspense> },
       { path: 'checkOut/:pymintid', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Checkout /></ProtectedRoute></Suspense> },
+      { path: 'usersettings', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><UserSettings /></ProtectedRoute></Suspense> },
       { path: '*', element: <Suspense fallback={<div>Loading...</div>}><NotFound /></Suspense> },
     ],
   },

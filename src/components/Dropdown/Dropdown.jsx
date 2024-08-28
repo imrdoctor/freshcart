@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate ,useLocation, Link  } from 'react-router-dom';
-import styles from './UserSetting.module.css'
 import useravatar from '../../assets/images/useravatar.jpg'
 import { UserContext } from '../../context/userContext';
 import toast from 'react-hot-toast';
@@ -169,8 +168,8 @@ export default function AccountDropdown2() {
                     View profile
                   </span>
                 </a> */}
-                <a
-                  href="#0"
+                <Link
+                  to={"/freshcart/usersettings"}
                   className="flex w-full items-center justify-between px-4 py-2.5 text-sm font-medium text-dark hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >
                   <span className="flex items-center gap-2">
@@ -199,8 +198,8 @@ export default function AccountDropdown2() {
                     </svg>
                     Settings
                   </span>
-                </a>
-                <Link
+                  </Link>
+                  <Link
                   to={"/freshcart/allorders"}
                   className="flex w-full items-center justify-between px-4 py-2.5 text-sm font-medium text-dark hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >

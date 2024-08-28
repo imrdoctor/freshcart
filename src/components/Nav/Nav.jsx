@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { NavLink, useNavigate, useLocation, Link } from 'react-router-dom';
 import logo from '../../assets/images/freshcart-logo.svg';
-import UserSetting from '../UserSetting/UserSetting';
+import Dropdown from '../Dropdown/Dropdown';
 import { UserContext } from '../../context/userContext';
 import toast from 'react-hot-toast';
 import { CartContext } from '../../context/CartContext';
@@ -99,7 +99,7 @@ export default function Nav() {
 
 
             {userlogin ? (
-              <UserSetting />
+              <Dropdown />
 
 
             ) : (
