@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-200 text-gray-800 py-12">
+    <footer className="bg-zinc-200 text-gray-800 py-6">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         {/* Top Section: Links and Subscription */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
@@ -20,10 +21,9 @@ export default function Footer() {
             <div>
               <h2 className="text-lg font-bold mb-4">Customer Service</h2>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:text-gray-950">Contact Us</a></li>
-                <li><a href="#" className="hover:text-gray-950">Order Tracking</a></li>
-                <li><a href="#" className="hover:text-gray-950">Returns & Exchanges</a></li>
-                <li><a href="#" className="hover:text-gray-950">Shipping Information</a></li>
+                <li>
+                  <Link to={"/freshcart/ReturnsExchanges"}className="hover:text-gray-950">Exchange & Return</Link>
+                  </li>
               </ul>
             </div>
           </div>
