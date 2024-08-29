@@ -47,8 +47,8 @@ export default function ResetPassword() {
   });
   
   return (
-    <div className="flex justify-center items-center">
-      <form onSubmit={formik.handleSubmit} className="bg-glass p-8 shadow-lg rounded-lg w-full max-w-md flex flex-col items-center gap-6">
+    <div className="flex justify-center mt-14 items-center">
+      <form onSubmit={formik.handleSubmit} className="bg-glass  p-8 shadow-lg rounded-lg w-full max-w-md flex flex-col items-center gap-6">
         <p className='text-center text-2xl font-bold text-blue-800'>New Password</p>
         <div className="w-full mb-5">
           <label htmlFor="email" className='block mb-2 text-sm font-medium text-gray-900'>Your email</label>
