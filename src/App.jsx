@@ -10,6 +10,7 @@ import TokenContextProvider from './context/TokenContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import toast, { Toaster } from 'react-hot-toast';
+import Loader from "./components/Loader/Loader.jsx";
 
 // Lazy load components
 const LayOut = lazy(() => import('./components/LayOut/LayOut.jsx'));
@@ -40,22 +41,22 @@ const routes = createBrowserRouter([
     path: '/freshcart',
     element: <LayOut />,
     children: [
-      { index: true, element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Home /></ProtectedRoute></Suspense> },
-      { path: 'regester', element: <Suspense fallback={<div>Loading...</div>}><ProtectLoginnedRoute><Register /></ProtectLoginnedRoute></Suspense> },
-      { path: 'resetPassword', element: <Suspense fallback={<div>Loading...</div>}><ProtectLoginnedRoute><ResetPassword /></ProtectLoginnedRoute></Suspense> },
-      { path: 'home', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Home /></ProtectedRoute></Suspense> },
-      { path: 'cart', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Cart /></ProtectedRoute></Suspense> },
-      { path: 'wishList', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><WshList /></ProtectedRoute></Suspense> },
-      { path: 'products', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Products /></ProtectedRoute></Suspense> },
-      { path: 'login', element: <Suspense fallback={<div>Loading...</div>}><ProtectLoginnedRoute><Login /></ProtectLoginnedRoute></Suspense> },
-      { path: 'categories', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Categories /></ProtectedRoute></Suspense> },
-      { path: 'ReturnsExchanges', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ReturnsExchanges /></ProtectedRoute></Suspense> },
-      { path: 'Allorders', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Allorders /></ProtectedRoute></Suspense> },
-      { path: 'productdetails/:productId', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ProductDetails /></ProtectedRoute></Suspense> },
-      { path: 'brands', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Brands /></ProtectedRoute></Suspense> },
-      { path: 'checkOut/:pymintid', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Checkout /></ProtectedRoute></Suspense> },
-      { path: 'usersettings', element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><UserSettings /></ProtectedRoute></Suspense> },
-      { path: '*', element: <Suspense fallback={<div>Loading...</div>}><NotFound /></Suspense> },
+      { index: true, element: <Suspense fallback={<Loader />}><ProtectedRoute><Home /></ProtectedRoute></Suspense> },
+      { path: 'regester', element: <Suspense fallback={<Loader />}><ProtectLoginnedRoute><Register /></ProtectLoginnedRoute></Suspense> },
+      { path: 'resetPassword', element: <Suspense fallback={<Loader />}><ProtectLoginnedRoute><ResetPassword /></ProtectLoginnedRoute></Suspense> },
+      { path: 'home', element: <Suspense fallback={<Loader />}><ProtectedRoute><Home /></ProtectedRoute></Suspense> },
+      { path: 'cart', element: <Suspense fallback={<Loader />}><ProtectedRoute><Cart /></ProtectedRoute></Suspense> },
+      { path: 'wishList', element: <Suspense fallback={<Loader />}><ProtectedRoute><WshList /></ProtectedRoute></Suspense> },
+      { path: 'products', element: <Suspense fallback={<Loader />}><ProtectedRoute><Products /></ProtectedRoute></Suspense> },
+      { path: 'login', element: <Suspense fallback={<Loader />}><ProtectLoginnedRoute><Login /></ProtectLoginnedRoute></Suspense> },
+      { path: 'categories', element: <Suspense fallback={<Loader />}><ProtectedRoute><Categories /></ProtectedRoute></Suspense> },
+      { path: 'ReturnsExchanges', element: <Suspense fallback={<Loader />}><ProtectedRoute><ReturnsExchanges /></ProtectedRoute></Suspense> },
+      { path: 'Allorders', element: <Suspense fallback={<Loader />}><ProtectedRoute><Allorders /></ProtectedRoute></Suspense> },
+      { path: 'productdetails/:productId', element: <Suspense fallback={<Loader />}><ProtectedRoute><ProductDetails /></ProtectedRoute></Suspense> },
+      { path: 'brands', element: <Suspense fallback={<Loader />}><ProtectedRoute><Brands /></ProtectedRoute></Suspense> },
+      { path: 'checkOut/:pymintid', element: <Suspense fallback={<Loader />}><ProtectedRoute><Checkout /></ProtectedRoute></Suspense> },
+      { path: 'usersettings', element: <Suspense fallback={<Loader />}><ProtectedRoute><UserSettings /></ProtectedRoute></Suspense> },
+      { path: '*', element: <Suspense fallback={<Loader />}><NotFound /></Suspense> },
     ],
   },
 ]);
