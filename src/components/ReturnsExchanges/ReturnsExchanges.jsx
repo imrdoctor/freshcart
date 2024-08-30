@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ReturnsAndExchanges() {
   return (
-    <div className="bg-gray-100 py-6 rounded-lg my-32 px-4">
+    <div className="bg-glass py-6 rounded-lg my-32 px-4">
       <div className="container mx-auto max-w-4xl">
         {/* Heading */}
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">Returns & Exchanges</h2>
@@ -15,7 +15,7 @@ export default function ReturnsAndExchanges() {
         </div>
 
         {/* Return Policy Section */}
-        <div className="bg-white p-6 shadow-md rounded-lg mb-8">
+        <div className="bg-glass e p-6 shadow-md rounded-lg mb-8">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">Return Policy</h3>
           <ul className="list-disc list-inside text-gray-600">
             <li className="mb-2">Items must be returned in their original condition, unworn, unwashed, and with all tags attached.</li>
@@ -26,7 +26,7 @@ export default function ReturnsAndExchanges() {
         </div>
 
         {/* Exchange Policy Section */}
-        <div className="bg-white p-6 shadow-md rounded-lg mb-8">
+        <div className="bg-glass p-6 shadow-md rounded-lg mb-8">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">Exchange Policy</h3>
           <ul className="list-disc list-inside text-gray-600">
             <li className="mb-2">Exchanges can be made within 30 days of the purchase date.</li>
@@ -36,7 +36,7 @@ export default function ReturnsAndExchanges() {
         </div>
 
         {/* How to Return or Exchange Items */}
-        <div className="bg-white p-6 shadow-md rounded-lg">
+        <div className="bg-glass p-6 shadow-md rounded-lg">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">How to Return or Exchange Items</h3>
           <p className="text-gray-600 mb-4">To return or exchange an item, please follow these steps:</p>
           <ol className="list-decimal list-inside text-gray-600 mb-4">

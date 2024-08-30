@@ -72,7 +72,7 @@ export default function Register() {
   });
 
   return (
-    <div className="flex justify-center items-center my-24">
+    <div className="flex justify-center items-center mt-16">
     <form onSubmit={formik.handleSubmit} className="bg-glass p-8 shadow-lg rounded-lg w-full max-w-md mx-auto">
       <p className='text-center font-bold text-blue-800'>Create Account</p>
       {/* Start Input */}
