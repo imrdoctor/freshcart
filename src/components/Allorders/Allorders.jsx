@@ -8,9 +8,7 @@ export default function Allorders() {
   
   useEffect(() => {
     if (getAllOrders) {
-      getAllOrders(); 
-      console.log(orders);
-      
+      getAllOrders();       
     }
   }, [getAllOrders]);
 
