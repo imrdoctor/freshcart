@@ -10,7 +10,7 @@ import { WishListContext } from '../../context/WashListContext';
 function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
   return (
     <div
-      className={`fixed top-[-7px] backdrop-blur-sm  bg-glass  left-0 p-6  right-0 shadow-lg transform ${
+      className={`fixed top-[-7px] backdrop-blur-lg  bg-glass  left-0 p-6  right-0 shadow-lg transform ${
         isOpen ? 'translate-y-[87px]' : '-translate-y-full'
       } transition-transform duration-300 ease-in-out lg:hidden z-40`}
     >
