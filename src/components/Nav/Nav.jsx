@@ -120,7 +120,7 @@ export default function Nav() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="bg-zinc-100 py-4 fixed top-0 left-0 right-0 z-50 text-center  bg-glass">
+    <nav className="bg-zinc-100 py-4 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 text-center  bg-glass">
       <div className="container flex mx-auto items-center justify-between lg:justify-center">
         {/* الشعار */}
         <div className="flex-shrink-0">
