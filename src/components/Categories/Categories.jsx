@@ -57,14 +57,16 @@ export default function Categories() {
   return (
     <div className="flex flex-col pt-5 overflow-hidden mt-16  ">
       <div className="lg:w-full lg:mx-4 lg:mb-0 flex-col lg:flex-row">
-        <h2 className="text-2xl font-bold text-gray-900 title-font mb-4 text-center">
-          Categories
-        </h2>
+
+        <h1 className="text-4xl text-indigo-500 font-semibold mb-4 text-center pt-16">Categories</h1>
+        <p className="text-lg text-gray-500 mb-4 text-center">We have a wide variety of Categories to choose from</p>
+
+
         <div className="flex flex-wrap -m-4 p-12">
           {data?.data.map((category, index) => (
             <div
               key={index}
-              className="w-full sm:w-1/2 lg:w-1/3 p-4 hover:scale-x-105 hover:scale-y-105 border-transparent rounded-xl border-4 hover:border-green-400 hover:bg-green-300 cursor-pointer duration-300"
+              className="w-full sm:w-1/2 lg:w-1/3 p-4 hover:scale-x-105 hover:scale-y-105 border-transparent rounded-xl border-4 hover:border-indigo-400 hover:bg-indigo-300 cursor-pointer duration-300"
               onClick={() => handleCategoryClick(category._id, category.name)} 
             >
               <div className="bg-gray-100 rounded-lg p-4 h-full flex flex-col">
@@ -87,22 +89,22 @@ export default function Categories() {
       {selectedCategoryId && (
   <div className="mt-8">
     <h2 className="text-2xl font-bold text-gray-900 title-font mb-4 p-12 text-center">
-      <span className='text-green-400'>{selectedCategoryName}</span> Subcategories
+      <span className='text-indigo-400'>{selectedCategoryName}</span> Subcategories
     </h2>
     {isSubcategoryLoading ? (
       <Loader />
     ) : (
       <>
         {subcategoryData?.data.length < 1 ? (
-          <h3 className="text-lg font-bold title-font text-center text-green-950">
+          <h3 className="text-lg font-bold title-font text-center text-indigo-950">
             No Products Available
           </h3>
         ) : (
           <div className="flex flex-wrap -m-4">
             {subcategoryData.data.map((subcategory, index) => (
               <div key={index} className="w-full sm:w-1/2 lg:w-1/3 p-4 mx-auto p-6">
-                <div className="bg-gray-100 rounded-lg p-4 h-full flex flex-col duration-300 hover:shadow-2xl border-transparent mx-8 border-4 hover:scale-x-105 hover:scale-y-105  border hover:border-green-600 hover:bg-green-300">
-                  <h3 className="text-lg font-bold title-font text-center text-green-950">
+                <div className="bg-gray-100 rounded-lg p-4 h-full flex flex-col duration-300 hover:shadow-2xl border-transparent mx-8 border-4 hover:scale-x-105 hover:scale-y-105  border hover:border-indigo-600 hover:bg-indigo-300">
+                  <h3 className="text-lg font-bold title-font text-center text-indigo-950">
                     {subcategory.name}
                   </h3>
                 </div>

@@ -51,7 +51,7 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #31c48d;
+  background-color: var(--main-color);
   border-radius: 3px;
 }
 

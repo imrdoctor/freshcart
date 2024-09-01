@@ -74,7 +74,7 @@ export default function UserSettings() {
   return (
     <div className="mt-24 flex items-center justify-center">
       <div className="w-full mb-6 bg-gray-100 shadow-2xl rounded-lg overflow-hidden">
-        <div className="p-6 bg-green-100 border-b border-green-300">
+        <div className="p-6 bg-indigo-100 border-b border-indigo-300">
           <h1 className="text-4xl font-extrabold text-gray-800 text-center">
             User Settings
           </h1>
@@ -84,7 +84,7 @@ export default function UserSettings() {
         </div>
         <div className="p-6 my-6">
           <div className="flex justify-center items-center flex-col max-w-xl m-auto">
-            <div className="w-full p-6 bg-green-100 border-b border-green-300">
+            <div className="w-full p-6 bg-indigo-100 border-b border-indigo-300">
               <h1 className="text-4xl font-extrabold text-gray-800 text-center">
                 Change Password
               </h1>
@@ -108,7 +108,7 @@ export default function UserSettings() {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.currentPassword}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
                   placeholder="Current Password"
                 />
                 {formik.touched.currentPassword && formik.errors.currentPassword ? (
@@ -133,7 +133,7 @@ export default function UserSettings() {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.password}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
                   placeholder="New Password"
                 />
                 {formik.touched.password && formik.errors.password ? (
@@ -158,7 +158,7 @@ export default function UserSettings() {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.rePassword}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
                   placeholder="Confirm Password"
                 />
                 {formik.touched.rePassword && formik.errors.rePassword ? (
@@ -171,7 +171,7 @@ export default function UserSettings() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full h-12 bg-green-400 text-white font-medium rounded-lg hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 text-sm px-5 py-2.5"
+                className="w-full h-12 bg-indigo-400 text-white font-medium rounded-lg hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-indigo-300 text-sm px-5 py-2.5"
               >
                 Submit
               </button>

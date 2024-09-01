@@ -44,13 +44,13 @@ export default function Brands() {
 
   return (
     <div className="p-4 mt-8">
-      <h1 className="text-4xl text-green-500 font-semibold mb-4 text-center pt-16">All Brands</h1>
+      <h1 className="text-4xl text-indigo-500 font-semibold mb-4 text-center pt-16">All Brands</h1>
       <p className="text-lg text-gray-500 mb-4 text-center">We have a wide variety of brands to choose from</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {data?.data?.data.map((brand) => (
           <div
             key={brand._id}
-            className="p-4 rounded border-4 hover:border-green-400 hover:bg-green-50 duration-300 cursor-pointer"
+            className="p-4 rounded border-4 hover:border-indigo-400 hover:bg-indigo-50 duration-300 cursor-pointer"
             onClick={() => handleBrandClick(brand)}
           >
             <img src={brand.image} alt={brand.name} className="w-full h-40 object-cover mb-4" />
@@ -74,7 +74,7 @@ export default function Brands() {
             >
               &times;
             </button>
-            <h2 className="text-3xl text-green-500 font-semibold">{selectedBrand.name}</h2>
+            <h2 className="text-3xl text-indigo-500 font-semibold">{selectedBrand.name}</h2>
             <p className="text-gray-500 mb-4">{selectedBrand.slug}</p>
             <img src={selectedBrand.image} alt={selectedBrand.name} className="w-full h-40 object-cover mb-4" />
             <button

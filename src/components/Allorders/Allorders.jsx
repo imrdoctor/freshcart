@@ -26,13 +26,13 @@ export default function Allorders() {
     <>
       <div className="mt-24 flex items-center justify-center">
         <div className="w-full mb-6 bg-gray-100 shadow-2xl rounded-lg overflow-hidden">
-          <div className="p-6 bg-green-100 border-b border-green-300">
+          <div className="p-6 bg-indigo-100 border-b border-indigo-300">
             <h1 className="text-4xl font-extrabold text-gray-800 text-center">
               Your All Orders
             </h1>
             <div className="flex justify-between flex-wrap text-center mt-4">
               <h2 className="text-xl font-semibold text-gray-700">
-                <i className="fa-solid fa-bag-shopping text-green-700"></i> Your Orders: <span className='font-bold text-gray-800'>{numofitems}</span>
+                <i className="fa-solid fa-bag-shopping text-indigo-700"></i> Your Orders: <span className='font-bold text-gray-800'>{numofitems}</span>
               </h2>
             </div>
           </div>
@@ -48,8 +48,8 @@ export default function Allorders() {
                         </h3>
                         <p className="text-sm text-gray-600">Paid At: {new Date(order.createdAt).toLocaleDateString()}</p>
                         <p className="text-sm text-gray-600">Payment Method: {order.paymentMethodType === "card" ? order.paymentMethodType : "Cash on delivery"}</p>
-                        <p className="text-lg font-semibold text-green-500">
-                          <i className="fa-solid fa-coins text-green-500"></i> {order.totalOrderPrice} EGP
+                        <p className="text-lg font-semibold text-indigo-500">
+                          <i className="fa-solid fa-coins text-indigo-500"></i> {order.totalOrderPrice} EGP
                         </p>
                       </div>
                     </div>

@@ -7,20 +7,20 @@ import toast from 'react-hot-toast';
 import ProductItem from "../ProductItem/ProductItem";
 import { WishListContext } from '../../context/WashListContext';
 
-export default function RecentProducts() {
+export default function allProducts() {
   const { wishList, removeItem, addtoWashList } = useContext(WishListContext);
 
   const { addProductToCart } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
   const [cruntid, setcruntid] = useState(null)
   const {washlistdata,setwashlistdata} = useState(wishList)
-  // useQuery(queryKey:['recentProducts'])
-  function getRecentProducts() {
-    return axios.get("https://ecommerce.routemisr.com/api/v1/products?page=2");
+  // useQuery(queryKey:['allProducts'])
+  function getallProducts() {
+    return axios.get("https://ecommerce.routemisr.com/api/v1/products");
   }
   const { data, isError, error, isLoading, isFetching } = useQuery({
-    queryKey: ["recentProducts"],
-    queryFn: getRecentProducts,
+    queryKey: ["allProducts"],
+    queryFn: getallProducts,
 
     // staleTime:5000,
     // retry: Infinity,
@@ -87,7 +87,9 @@ export default function RecentProducts() {
   // Display Date
 
   return (
-    <div className="row mt-10 mt-16">
+    <>
+
+      <div className="row mt-10 mt-16">
       {data?.data.data.map((product) => (
         <ProductItem
           key={product.id}
@@ -100,5 +102,7 @@ export default function RecentProducts() {
         />
       ))}
     </div>
+    </>
+
   );
 }

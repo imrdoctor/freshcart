@@ -23,7 +23,7 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
                 className={({ isActive }) =>
                   `p-2 rounded-lg border border-transparent ${
                     isActive || isHomeActive
-                      ? 'text-gray-600 font-medium bg-green-200 border-green-400'
+                      ? 'text-gray-600 font-medium bg-indigo-200 border-indigo-400'
                       : ''
                   }`
                 }
@@ -37,7 +37,7 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
                 to={'products'}
                 className={({ isActive }) =>
                   `p-2 rounded-lg border border-transparent ${
-                    isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                    isActive ? 'text-gray-600 font-medium bg-indigo-200 border-indigo-400' : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -50,7 +50,7 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
                 to={'categories'}
                 className={({ isActive }) =>
                   `p-2 rounded-lg border border-transparent ${
-                    isActive ? 'text-gray-600 font-medium bg-green-200 border border-green-400' : ''
+                    isActive ? 'text-gray-600 font-medium bg-indigo-200 border border-indigo-400' : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -63,7 +63,7 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
                 to={'brands'}
                 className={({ isActive }) =>
                   `p-2 rounded-lg border border-transparent ${
-                    isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                    isActive ? 'text-gray-600 font-medium bg-indigo-200 border-indigo-400' : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -149,8 +149,8 @@ export default function Nav() {
               {cartInfo?.numOfCartItems > 0 && (
                 <Link to="cart" className="relative">
                   <div className="relative">
-                    <i className="fa-solid fa-cart-shopping text-green-700 fa-2xl"></i>
-                    <span className="absolute bottom-5 left-3 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700">
+                    <i className="fa-solid fa-cart-shopping text-indigo-700 fa-2xl"></i>
+                    <span className="absolute bottom-5 left-3 rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700">
                       {cartInfo.numOfCartItems}
                     </span>
                   </div>
@@ -174,7 +174,7 @@ export default function Nav() {
                   to={'/freshcart/home'}
                   className={({ isActive }) =>
                     `p-2 rounded-lg border border-transparent ${
-                      isActive || isHomeActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                      isActive || isHomeActive ? 'text-gray-600 font-medium bg-indigo-200 border-indigo-400' : ''
                     }`
                   }
                 >
@@ -185,7 +185,7 @@ export default function Nav() {
                 <NavLink
                   to={'products'}
                   className={({ isActive }) =>
-                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''}`
+                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-indigo-200 border-indigo-400' : ''}`
                   }
                 >
                   Products
@@ -195,7 +195,7 @@ export default function Nav() {
                 <NavLink
                   to={'categories'}
                   className={({ isActive }) =>
-                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border border-green-400' : ''}`
+                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-indigo-200 border border-indigo-400' : ''}`
                   }
                 >
                   Categories
@@ -205,7 +205,7 @@ export default function Nav() {
                 <NavLink
                   to={'brands'}
                   className={({ isActive }) =>
-                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''}`
+                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-indigo-200 border-indigo-400' : ''}`
                   }
                 >
                   Brands
@@ -235,8 +235,8 @@ export default function Nav() {
               {cartInfo?.numOfCartItems > 0 && (
                 <Link to="cart" className="relative">
                   <div className="relative">
-                    <i className="fa-solid fa-cart-shopping text-green-700 fa-2xl"></i>
-                    <span className="absolute bottom-5 left-3 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700">
+                    <i className="fa-solid fa-cart-shopping text-indigo-700 fa-2xl"></i>
+                    <span className="absolute bottom-5 left-3 rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700">
                       {cartInfo.numOfCartItems}
                     </span>
                   </div>

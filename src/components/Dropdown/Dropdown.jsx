@@ -99,7 +99,7 @@ export default function AccountDropdown2() {
             <button
               ref={trigger}
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-stroke bg-green-100 border-b border-green-300 px-6 py-3 text-base font-medium text-gray-600 dark:border-dark-3 dark:bg-dark-2 dark:text-white"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-stroke bg-indigo-100 border-b border-indigo-300 px-6 py-3 text-base font-medium text-gray-600 dark:border-dark-3 dark:bg-dark-2 dark:text-white"
             >
               Account
               <span
