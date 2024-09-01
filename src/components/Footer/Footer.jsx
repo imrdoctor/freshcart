@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-glass text-gray-800 py-6 rounded-tr-[64px] rounded-tl-[64px] backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         {/* Top Section: Links and Subscription */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Navigation Links */}
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-12 mb-8 md:mb-0">
             <div>
@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section: Copyright */}
-        <div className="text-center mt-8">
+        <div className="text-center">
           <p className="text-sm">&copy; 2024 freshcart App. All Rights Reserved.</p>
         </div>
       </div>

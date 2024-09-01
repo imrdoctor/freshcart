@@ -1,117 +1,283 @@
-import React, { useContext, useEffect } from 'react';
-import { NavLink, useNavigate, useLocation, Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 import logo from '../../assets/images/freshcart-logo.svg';
 import Dropdown from '../Dropdown/Dropdown';
 import { UserContext } from '../../context/userContext';
-import toast from 'react-hot-toast';
 import { CartContext } from '../../context/CartContext';
 import { WishListContext } from '../../context/WashListContext';
+
+// مكون القائمة الجانبية للموبايل
+function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
+  return (
+    <div
+      className={`fixed top-[-7px] backdrop-blur-sm  bg-glass left-0 p-6  right-0 shadow-lg transform ${isOpen ? 'translate-y-[87px]' : '-translate-y-full'
+        } transition-transform duration-300 ease-in-out lg:hidden z-40`}
+    >
+      <ul className="flex flex-col items-center text-lg  text-gray-600 gap-6 mt-4">
+        {userlogin ? (
+          <>
+            <li>
+              <NavLink
+                to={'/freshcart/home'}
+                className={({ isActive }) =>
+                  `p-2 rounded-lg border border-transparent ${isActive || isHomeActive
+                    ? 'text-gray-600 font-medium bg-green-200 border-green-400'
+                    : ''
+                  }`
+                }
+                onClick={toggleMenu}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={'products'}
+                className={({ isActive }) =>
+                  `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                  }`
+                }
+                onClick={toggleMenu}
+              >
+                Products
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={'categories'}
+                className={({ isActive }) =>
+                  `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border border-green-400' : ''
+                  }`
+                }
+                onClick={toggleMenu}
+              >
+                Categories
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={'brands'}
+                className={({ isActive }) =>
+                  `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                  }`
+                }
+                onClick={toggleMenu}
+              >
+                Brands
+              </NavLink>
+            </li>
+
+          </>
+        ) : (
+          <>
+            <li>
+              <NavLink
+                to={'regester'}
+                className={({ isActive }) =>
+                  `p-2 rounded-lg border border-transparent ${isActive ? 'bg-blue-400 border-blue-600 text-gray-100' : ''
+                  }`
+                }
+                onClick={toggleMenu}
+              >
+                <i className="fa-solid fa-plus"></i> regester
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={'login'}
+                className={({ isActive }) =>
+                  `p-2 rounded-lg border border-transparent ${isActive ? 'bg-blue-400 border-blue-600 text-gray-100' : ''
+                  }`
+                }
+                onClick={toggleMenu}
+              >
+                <i className="fa-solid fa-right-to-bracket"></i> Login
+              </NavLink>
+            </li>
+          </>
+        )}
+      </ul>
+    </div>
+  );
+}
+
 export default function Nav() {
-  const navigate = useNavigate();
-  const { userlogin, setuserlogin } = useContext(UserContext);
+  const { userlogin } = useContext(UserContext);
   const { cartInfo } = useContext(CartContext);
   const { numitemswahlist } = useContext(WishListContext);
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isHomeActive = location.pathname === '/' || location.pathname === '/home';
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="bg-zinc-100 py-4 fixed top-0 left-0 right-0 z-50 text-center opacity-100 z-50">
-      <div className="container flex mx-auto items-center flex-col lg:flex-row justify-between">
-        <div>
-          <img width={160} src={logo} alt="logo" className='mb-4 lg:mb-0' />
+    <nav className="bg-zinc-100 backdrop-blur-sm py-4 fixed top-0 left-0 right-0 z-50 text-center  bg-glass">
+      <div className="container flex mx-auto items-center justify-between lg:justify-center">
+        {/* الشعار */}
+        <div className="flex-shrink-0">
+          <img width={160} src={logo} alt="logo" className="mb-4 lg:mb-0" />
         </div>
-        <ul className='flex flex-col lg:flex-row text-lg text-gray-600 gap-2 items-center'>
-          {userlogin ? (
+
+        {/* الأيقونات والقائمة الجانبية */}
+        <div className="flex items-center gap-4 lg:hidden">
+          {/* زر القائمة الجانبية للموبايل */}
+
+          {userlogin && (
+            <div className="flex items-center gap-4">
+
+              {/* أيقونات الـ Wishlist والسلة */}
+              {numitemswahlist > 0 && (
+                <Link to="wishList" className="relative">
+                  <div className="relative">
+                    <i className="fa fa-heart text-red-600 fa-xl"></i>
+                    <span className="absolute bottom-5 left-3 rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-600">
+                      {numitemswahlist}
+                    </span>
+                  </div>
+                </Link>
+              )}
+
+              {cartInfo?.numOfCartItems > 0 && (
+                <Link to="cart" className="relative">
+                  <div className="relative">
+                    <i className="fa-solid fa-cart-shopping text-green-700"></i>
+                    <span className="absolute bottom-5 left-3 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700">
+                      {cartInfo.numOfCartItems}
+                    </span>
+                  </div>
+                </Link>
+              )}
+
+              {/* Dropdown للحساب */}
+            </div>
+          )}
+          <button onClick={toggleMenu}>
+            <i className={`fa ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+          </button>
+        </div>
+
+        {/* قائمة سطح المكتب */}
+        <ul className="hidden lg:flex lg:items-center lg:gap-4 mx-auto lg:mr-auto text-lg text-gray-600">
+          {userlogin && (
             <>
-              <li><NavLink to={'/freshcart/home'} className={({ isActive }) => `p-2 rounded-lg border  border-transparent${isActive || isHomeActive ? "text-gray-600 font-medium bg-green-200   border-green-400" : ""}`}>Home</NavLink></li>
-              {/* <li><NavLink to={'cart'} className={({ isActive }) => `p-2 rounded-lg border  border-transparent${isActive ? "text-gray-600 font-medium bg-green-200  border-green-400" : ""}`}>Cart</NavLink> </li>  */}
-              {/* <li><NavLink to={'wishList'} className={({ isActive }) => `p-2 rounded-lg border  border-transparent${isActive ? "text-gray-600 font-medium bg-green-200   border-green-400" : ""}`}>WishList</NavLink></li> */}
-              <li><NavLink to={'products'} className={({ isActive }) => `p-2 rounded-lg border border-transparent${isActive ? "text-gray-600 font-medium bg-green-200   border-green-400" : ""}`}>Products</NavLink></li>
-              <li><NavLink to={'categories'} className={({ isActive }) => `p-2 rounded-lg border border-transparent${isActive ? "text-gray-600 font-medium bg-green-200  border border-green-400" : ""}`}>Categories</NavLink></li>
-              <li><NavLink to={'brands'} className={({ isActive }) => `p-2 rounded-lg border border-transparent${isActive ? "text-gray-600 font-medium bg-green-200   border-green-400" : ""}`}>Brands</NavLink></li>
+              <li>
+                <NavLink
+                  to={'/freshcart/home'}
+                  className={({ isActive }) =>
+                    `p-2 rounded-lg border border-transparent ${isActive || isHomeActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                    }`
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={'products'}
+                  className={({ isActive }) =>
+                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''}`
+                  }
+                >
+                  Products
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={'categories'}
+                  className={({ isActive }) =>
+                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border border-green-400' : ''}`
+                  }
+                >
+                  Categories
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={'brands'}
+                  className={({ isActive }) =>
+                    `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''}`
+                  }
+                >
+                  Brands
+                </NavLink>
+              </li>
             </>
-          ) : null}
+          )}
         </ul>
 
-        <div className="flex flex-col lg:flex-row items-center">
-          <ul className='flex flex-col lg:flex-row gap-4 text-xl text-gray-600 items-center'>
-            {/* <li className='text-gray-900 p-2 flex flex-row gap-2'>
-              <div className="group relative">
-                <a target='_blank' href="#"><i className='fa-brands fa-facebook text-2xl hover:scale-125 duration-200 hover:text-blue-700'></i></a>
-                <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-20 origin-bottom scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">Facebook</span>
-              </div>
-              <div className="group relative">
-                <a target='_blank' href="#"><i className='fa-brands fa-tiktok text-2xl hover:scale-125 rounded duration-200 hover:text-blue-700'></i></a>
-                <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-20 origin-bottom scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">Tiktok</span>
-              </div>
-              <div className="group relative">
-                <a target='_blank' href="#"><i className='fa-brands fa-square-x-twitter text-2xl hover:scale-125 duration-200 hover:text-gray-700'></i></a>
-                <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-20 origin-bottom scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">Twitter</span>
-              </div>
-              <div className="group relative">
-                <a target='_blank' href="#"><i className='fa-brands fa-linkedin text-2xl hover:scale-125 duration-200 hover:text-blue-700'></i></a>
-                <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-20 origin-bottom scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">Linkedin</span>
-              </div>
-              <div className="group relative">
-                <a target='_blank' href="#"><i className='fa-brands fa-youtube text-2xl hover:scale-125 duration-200 hover:text-red-700'></i></a>
-                <span className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-20 origin-bottom scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">Youtube</span>
-              </div>
-            </li> */}
-{userlogin && (
-  <div className='mt-2 flex items-center space-x-4'>
-{cartInfo?.numOfCartItems > 0 && (
-  <Link to="cart" className='relative'>
-    <div className="cart relative">
-      <li>
-        <i className="fa-solid fa-cart-shopping font-bold text-green-700"></i>
-      </li>
-      <span
-        id="cart-badge" // Unique id for cart
-        className="absolute bottom-5 left-3 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700"
-      >
-        {cartInfo.numOfCartItems}
-      </span>
-    </div>
-  </Link>
-)}
+        {/* أيقونات الجانب الأيمن على سطح المكتب */}
+        <div className="hidden lg:flex items-center gap-4 ">
+          {userlogin && (
 
-    {numitemswahlist > 0 && (
-  <Link to="wishList" className='relative'>
-    <div className="cart relative">
-      <li>
-        <i className="fa fa-heart text-red-600 fa-xl"></i>
-      </li>
-      <span
-        id="wishList-badge" // Unique id for wishList
-        className="absolute bottom-5 left-3 rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-600"
-      >
-        {numitemswahlist}
-      </span>
-    </div>
-  </Link>
-)}
+            <>
 
-  </div>
-)}
+              {numitemswahlist > 0 && (
+                <Link to="wishList" className="relative">
+                  <div className="relative">
+                    <i className="fa fa-heart text-red-600 fa-xl"></i>
+                    <span className="absolute bottom-5 left-3 rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-600">
+                      {numitemswahlist}
+                    </span>
+                  </div>
+                </Link>
+              )}
 
-
-
-            {userlogin ? (
+              {cartInfo?.numOfCartItems > 0 && (
+                <Link to="cart" className="relative">
+                  <div className="relative">
+                    <i className="fa-solid fa-cart-shopping text-green-700"></i>
+                    <span className="absolute bottom-5 left-3 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700">
+                      {cartInfo.numOfCartItems}
+                    </span>
+                  </div>
+                </Link>
+              )}
               <Dropdown />
 
-
-            ) : (
-              <>
-
-                <li><NavLink to={'regester'} className={({ isActive }) => `p-2 rounded-lg border border-transparent ${isActive ? "bg-blue-400 border-blue-600 text-gray-100" : ""}`}><i className="fa-solid fa-plus"></i> Register</NavLink></li>
-                <li><NavLink to={'login'} className={({ isActive }) => `p-2 rounded-lg border border-transparent ${isActive ? "bg-blue-400 border-blue-600 text-gray-100" : ""}`}><i className="fa-solid fa-right-to-bracket"></i> Login</NavLink></li>
-              </>
-            )}
-          </ul>
+            </>
+          )}
         </div>
+
+        {userlogin ? (
+          null) : (
+          <>
+            <div className=' hidden lg:flex list-none	 '>
+              <li>
+                <NavLink
+                  to={"regester"}
+                  className={({ isActive }) =>
+                    `p-2 rounded-lg border border-transparent ${isActive
+                      ? "bg-blue-400 border-blue-600 text-gray-100"
+                      : ""
+                    }`
+                  }
+                >
+                  <i className="fa-solid fa-plus"></i> regester
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"login"}
+                  className={({ isActive }) =>
+                    `p-2 rounded-lg border border-transparent ${isActive
+                      ? "bg-blue-400 border-blue-600 text-gray-100"
+                      : ""
+                    }`
+                  }
+                >
+                  <i className="fa-solid fa-right-to-bracket"></i> Login
+                </NavLink>
+              </li>
+            </div>
+
+          </>
+        )}
       </div>
+
+      {/* قائمة الموبايل */}
+      <MobileMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} userlogin={userlogin} isHomeActive={isHomeActive} />
     </nav>
   );
 }

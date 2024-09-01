@@ -5,10 +5,12 @@ import Loader from "../Loader/Loader";
 export default function Allorders() {
   const { getAllOrders, orders = { data: [] }, loading } = useContext(AllOrders);
   const [numofitems, setnumofitems] = useState(0);
-
+  
   useEffect(() => {
     if (getAllOrders) {
       getAllOrders(); 
+      console.log(orders);
+      
     }
   }, [getAllOrders]);
 
@@ -46,8 +48,7 @@ export default function Allorders() {
                         <h3 className="text-lg font-semibold text-gray-900">
                           Order ID: {order.id}
                         </h3>
-                        <p className="text-sm text-gray-600">Created At: {new Date(order.createdAt).toLocaleDateString()}</p>
-                        <p className="text-sm text-gray-600">Paid At: {order.paidAt ? new Date(order.paidAt).toLocaleDateString() : 'Not Paid'}</p>
+                        <p className="text-sm text-gray-600">Paid At: {new Date(order.createdAt).toLocaleDateString()}</p>
                         <p className="text-sm text-gray-600">Payment Method: {order.paymentMethodType === "card" ? order.paymentMethodType : "Cash on delivery"}</p>
                         <p className="text-lg font-semibold text-green-500">
                           <i className="fa-solid fa-coins text-green-500"></i> {order.totalOrderPrice} EGP
