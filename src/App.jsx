@@ -69,7 +69,7 @@ function App() {
           <CartContextProvider>
             <AllOrdersContext>
               <WashListContext>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loader />}>
                   <RouterProvider router={routes} />
                 </Suspense>
                 <Toaster />
