@@ -10,8 +10,9 @@ import { WishListContext } from '../../context/WashListContext';
 function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
   return (
     <div
-      className={`fixed top-[-7px] backdrop-blur-sm  bg-glass left-0 p-6  right-0 shadow-lg transform ${isOpen ? 'translate-y-[87px]' : '-translate-y-full'
-        } transition-transform duration-300 ease-in-out lg:hidden z-40`}
+      className={`fixed top-[-7px] backdrop-blur-sm  bg-glass  left-0 p-6  right-0 shadow-lg transform ${
+        isOpen ? 'translate-y-[87px]' : '-translate-y-full'
+      } transition-transform duration-300 ease-in-out lg:hidden z-40`}
     >
       <ul className="flex flex-col items-center text-lg  text-gray-600 gap-6 mt-4">
         {userlogin ? (
@@ -20,9 +21,10 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
               <NavLink
                 to={'/freshcart/home'}
                 className={({ isActive }) =>
-                  `p-2 rounded-lg border border-transparent ${isActive || isHomeActive
-                    ? 'text-gray-600 font-medium bg-green-200 border-green-400'
-                    : ''
+                  `p-2 rounded-lg border border-transparent ${
+                    isActive || isHomeActive
+                      ? 'text-gray-600 font-medium bg-green-200 border-green-400'
+                      : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -34,7 +36,8 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
               <NavLink
                 to={'products'}
                 className={({ isActive }) =>
-                  `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                  `p-2 rounded-lg border border-transparent ${
+                    isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -46,7 +49,8 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
               <NavLink
                 to={'categories'}
                 className={({ isActive }) =>
-                  `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border border-green-400' : ''
+                  `p-2 rounded-lg border border-transparent ${
+                    isActive ? 'text-gray-600 font-medium bg-green-200 border border-green-400' : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -58,7 +62,8 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
               <NavLink
                 to={'brands'}
                 className={({ isActive }) =>
-                  `p-2 rounded-lg border border-transparent ${isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                  `p-2 rounded-lg border border-transparent ${
+                    isActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -74,7 +79,8 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
               <NavLink
                 to={'regester'}
                 className={({ isActive }) =>
-                  `p-2 rounded-lg border border-transparent ${isActive ? 'bg-blue-400 border-blue-600 text-gray-100' : ''
+                  `p-2 rounded-lg border border-transparent ${
+                    isActive ? 'bg-blue-400 border-blue-600 text-gray-100' : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -86,7 +92,8 @@ function MobileMenu({ isOpen, toggleMenu, userlogin, isHomeActive }) {
               <NavLink
                 to={'login'}
                 className={({ isActive }) =>
-                  `p-2 rounded-lg border border-transparent ${isActive ? 'bg-blue-400 border-blue-600 text-gray-100' : ''
+                  `p-2 rounded-lg border border-transparent ${
+                    isActive ? 'bg-blue-400 border-blue-600 text-gray-100' : ''
                   }`
                 }
                 onClick={toggleMenu}
@@ -113,7 +120,7 @@ export default function Nav() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="bg-zinc-100 backdrop-blur-sm py-4 fixed top-0 left-0 right-0 z-50 text-center  bg-glass">
+    <nav className="bg-zinc-100 py-4 fixed top-0 left-0 right-0 z-50 text-center  bg-glass">
       <div className="container flex mx-auto items-center justify-between lg:justify-center">
         {/* الشعار */}
         <div className="flex-shrink-0">
@@ -153,7 +160,7 @@ export default function Nav() {
               {/* Dropdown للحساب */}
             </div>
           )}
-          <button onClick={toggleMenu}>
+                    <button onClick={toggleMenu}>
             <i className={`fa ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
           </button>
         </div>
@@ -166,7 +173,8 @@ export default function Nav() {
                 <NavLink
                   to={'/freshcart/home'}
                   className={({ isActive }) =>
-                    `p-2 rounded-lg border border-transparent ${isActive || isHomeActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
+                    `p-2 rounded-lg border border-transparent ${
+                      isActive || isHomeActive ? 'text-gray-600 font-medium bg-green-200 border-green-400' : ''
                     }`
                   }
                 >
@@ -210,7 +218,7 @@ export default function Nav() {
         {/* أيقونات الجانب الأيمن على سطح المكتب */}
         <div className="hidden lg:flex items-center gap-4 ">
           {userlogin && (
-
+            
             <>
 
               {numitemswahlist > 0 && (
@@ -234,46 +242,48 @@ export default function Nav() {
                   </div>
                 </Link>
               )}
-              <Dropdown />
+                      <Dropdown />
 
             </>
           )}
         </div>
-
+        
         {userlogin ? (
-          null) : (
-          <>
-            <div className=' hidden lg:flex list-none	 '>
-              <li>
-                <NavLink
-                  to={"regester"}
-                  className={({ isActive }) =>
-                    `p-2 rounded-lg border border-transparent ${isActive
-                      ? "bg-blue-400 border-blue-600 text-gray-100"
-                      : ""
-                    }`
-                  }
-                >
-                  <i className="fa-solid fa-plus"></i> regester
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to={"login"}
-                  className={({ isActive }) =>
-                    `p-2 rounded-lg border border-transparent ${isActive
-                      ? "bg-blue-400 border-blue-600 text-gray-100"
-                      : ""
-                    }`
-                  }
-                >
-                  <i className="fa-solid fa-right-to-bracket"></i> Login
-                </NavLink>
-              </li>
-            </div>
+null            ) : (
+              <>
+              <div className=' hidden lg:flex list-none	 '>
+                <li>
+                  <NavLink
+                    to={"regester"}
+                    className={({ isActive }) =>
+                      `p-2 rounded-lg border border-transparent ${
+                        isActive
+                          ? "bg-blue-400 border-blue-600 text-gray-100"
+                          : ""
+                      }`
+                    }
+                  >
+                    <i className="fa-solid fa-plus"></i> regester
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={"login"}
+                    className={({ isActive }) =>
+                      `p-2 rounded-lg border border-transparent ${
+                        isActive
+                          ? "bg-blue-400 border-blue-600 text-gray-100"
+                          : ""
+                      }`
+                    }
+                  >
+                    <i className="fa-solid fa-right-to-bracket"></i> Login
+                  </NavLink>
+                </li>                
+              </div>
 
-          </>
-        )}
+              </>
+            )}
       </div>
 
       {/* قائمة الموبايل */}
