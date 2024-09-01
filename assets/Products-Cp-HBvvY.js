@@ -1,1 +1,0 @@
-import{j as t}from"./index-DC2egkta.js";import{R as r}from"./RecentProducts-CCpoF_7X.js";import"./useQuery-sj7xysb9.js";import"./ProductItem-DAM-ITeL.js";function i(){return t.jsx(r,{})}export{i as default};
