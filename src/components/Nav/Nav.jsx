@@ -131,7 +131,7 @@ export default function Nav() {
               {numitemswahlist > 0 && (
                 <Link to="wishList" className="relative">
                   <div className="relative">
-                    <i className="fa fa-heart text-red-600 fa-xl"></i>
+                    <i className="fa fa-heart text-red-600 fa-2xl"></i>
                     <span className="absolute bottom-5 left-3 rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-600">
                       {numitemswahlist}
                     </span>
@@ -142,7 +142,7 @@ export default function Nav() {
               {cartInfo?.numOfCartItems > 0 && (
                 <Link to="cart" className="relative">
                   <div className="relative">
-                    <i className="fa-solid fa-cart-shopping text-green-700"></i>
+                    <i className="fa-solid fa-cart-shopping text-green-700 fa-2xl"></i>
                     <span className="absolute bottom-5 left-3 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700">
                       {cartInfo.numOfCartItems}
                     </span>
@@ -216,7 +216,7 @@ export default function Nav() {
               {numitemswahlist > 0 && (
                 <Link to="wishList" className="relative">
                   <div className="relative">
-                    <i className="fa fa-heart text-red-600 fa-xl"></i>
+                    <i className="fa fa-heart text-red-600 fa-2xl"></i>
                     <span className="absolute bottom-5 left-3 rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-600">
                       {numitemswahlist}
                     </span>
@@ -227,7 +227,7 @@ export default function Nav() {
               {cartInfo?.numOfCartItems > 0 && (
                 <Link to="cart" className="relative">
                   <div className="relative">
-                    <i className="fa-solid fa-cart-shopping text-green-700"></i>
+                    <i className="fa-solid fa-cart-shopping text-green-700 fa-2xl"></i>
                     <span className="absolute bottom-5 left-3 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700">
                       {cartInfo.numOfCartItems}
                     </span>
